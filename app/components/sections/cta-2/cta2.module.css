@@ -1,0 +1,99 @@
+.cta2-body {
+    position: relative;
+    border-radius: 16px;
+    background: #1F2454;
+    max-width: 1200px;
+    margin: auto;
+    z-index: 0;
+    isolation: isolate;
+}
+
+.cta2-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        #0161FF 0deg,
+        #1DD1E8 90deg,
+        #3719CA 180deg,
+        #0161FF 270deg,
+        #0161FF 360deg
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: cta2-border-spin 6s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@property --border-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes cta2-border-spin {
+    to {
+        --border-angle: 360deg;
+    }
+}
+
+/* Fallback for browsers without @property support */
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+    .cta2-body::before {
+        background: linear-gradient(120deg, #0161FF, #1DD1E8, #3719CA, #0161FF);
+        background-size: 300% 300%;
+        animation: cta2-border-shift 6s linear infinite;
+    }
+    @keyframes cta2-border-shift {
+        0%   { background-position: 0% 50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+}
+
+.cta2-content {
+    max-width: 560px;
+}
+
+.cta2-heading {
+    color: var(--text-white);
+    font-size: clamp(24px, 2.2vw, 38px);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.cta2-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.cta2-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .cta2-image {
+        width: 100%;
+        max-width: 320px;
+        order: 1;
+    }
+    .cta2-content{
+        order: 2;
+    }
+}

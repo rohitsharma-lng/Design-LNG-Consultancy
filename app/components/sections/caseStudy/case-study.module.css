@@ -1,0 +1,267 @@
+/* ── Section & container ────────────────────────────────── */
+.cs-section {
+    width: 100%;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.cs-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ── Carousel wrapper ───────────────────────────────────── */
+.cs-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 5px;
+}
+
+.cs-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 570px;
+    perspective: 2000px;
+}
+
+.cs-carousel-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+/* ── Slide positions ────────────────────────────────────── */
+.cs-carousel-slide {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+}
+
+.cs-carousel-slide.cs-center {
+    transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
+    opacity: 1;
+    z-index: 10;
+}
+
+.cs-carousel-slide.cs-left-1 {
+    transform: translateX(-200px) translateZ(-200px) rotateY(35deg) scale(0.8);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.cs-carousel-slide.cs-left-2 {
+    transform: translateX(-360px) translateZ(-350px) rotateY(45deg) scale(0.65);
+    opacity: 0.3;
+    z-index: 2;
+}
+
+.cs-carousel-slide.cs-right-1 {
+    transform: translateX(200px) translateZ(-200px) rotateY(-35deg) scale(0.8);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.cs-carousel-slide.cs-right-2 {
+    transform: translateX(360px) translateZ(-350px) rotateY(-45deg) scale(0.65);
+    opacity: 0.3;
+    z-index: 2;
+}
+
+.cs-carousel-slide.cs-hidden {
+    transform: translateX(0) translateZ(-500px) rotateY(0deg) scale(0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Side cards: show background image only, hide content */
+.cs-right-1 .cs-card,
+.cs-right-2 .cs-card,
+.cs-left-1 .cs-card,
+.cs-left-2 .cs-card {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+}
+
+.cs-right-1 .cs-card .cs-card-content, .cs-right-1 .cs-card :global(.cs-cta-button),
+.cs-right-2 .cs-card .cs-card-content, .cs-right-2 .cs-card :global(.cs-cta-button),
+.cs-left-1  .cs-card .cs-card-content, .cs-left-1  .cs-card :global(.cs-cta-button),
+.cs-left-2  .cs-card .cs-card-content, .cs-left-2  .cs-card :global(.cs-cta-button) {
+    opacity: 0;
+}
+
+/* Center card: no background image, show content */
+.cs-center .cs-card { background-image: none !important; }
+.cs-center .cs-card .cs-card-content,
+.cs-center .cs-card :global(.cs-cta-button) { opacity: 1; }
+
+/* ── Card ───────────────────────────────────────────────── */
+.cs-card {
+    background: #0e1228;
+    border-radius: 44px;
+    padding: 36px;
+    max-width: 540px;
+    width: 100%;
+    box-shadow: 0px 20px 60px 0px rgba(55, 25, 202, 0.08);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cs-card-content { flex: 1; }
+
+.cs-case-number {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.cs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    opacity: 0.5;
+}
+
+.cs-tag {
+    background: #1a1e3a;
+    border-radius: 31px;
+    padding: 4px 16px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.cs-card-title {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 34.5px;
+    margin-bottom: 24px;
+}
+
+.cs-card-description {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 36px;
+}
+
+/* ── Pagination ─────────────────────────────────────────── */
+.cs-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cs-pagination-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cs-pagination-dot.cs-active {
+    width: 32px;
+    background: linear-gradient(to right, #2d96f0, #02a7bc);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1280px) {
+    .cs-carousel-slide.cs-left-1  { transform: translateX(-160px) translateZ(-200px) rotateY(35deg) scale(0.75); }
+    .cs-carousel-slide.cs-right-1 { transform: translateX(160px) translateZ(-200px) rotateY(-35deg) scale(0.75); }
+    .cs-carousel-slide.cs-left-2  { transform: translateX(-280px) translateZ(-350px) rotateY(45deg) scale(0.6); }
+    .cs-carousel-slide.cs-right-2 { transform: translateX(280px) translateZ(-350px) rotateY(-45deg) scale(0.6); }
+}
+
+@media (max-width: 768px) {
+    .cs-section { padding: 40px 12px; }
+
+    .cs-carousel-wrapper {
+        margin-bottom: 32px;
+        gap: 0;
+    }
+
+    .cs-carousel-container {
+        min-height: auto;
+        overflow: hidden;
+    }
+
+    .cs-carousel-track {
+        position: relative;
+    }
+
+    .cs-carousel-slide {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Hide side slides on mobile — show center only */
+    .cs-carousel-slide.cs-left-1,
+    .cs-carousel-slide.cs-left-2,
+    .cs-carousel-slide.cs-right-1,
+    .cs-carousel-slide.cs-right-2 {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .cs-card {
+        padding: 24px 20px;
+        min-height: auto;
+        max-width: 100%;
+        border-radius: 24px;
+    }
+
+    .cs-case-number {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .cs-tags {
+        margin-bottom: 16px;
+    }
+
+    .cs-tag {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+
+    .cs-card-title {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 16px;
+    }
+
+    .cs-card-description {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 24px;
+    }
+
+}

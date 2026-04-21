@@ -1,0 +1,63 @@
+/* ── Animated AI Sparkle Icon ─────────────────────────────── */
+
+.sparkleWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sparkleSvg {
+  animation: glow 2.5s ease-in-out infinite;
+  overflow: visible;
+}
+
+/* Main star path — gentle breathing pulse */
+.mainStar {
+  transform-origin: 9px 9px;
+  animation: starPulse 3s ease-in-out infinite;
+}
+
+/* Top-right small plus — twinkle */
+.sparkle1 {
+  transform-origin: 15px 3.75px;
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+
+/* Bottom-left small plus — offset twinkle */
+.sparkle2 {
+  transform-origin: 3px 13.5px;
+  animation: twinkle 1.8s ease-in-out infinite 0.9s;
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+
+@keyframes starPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(4deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.7))
+           drop-shadow(0 0 14px rgba(139, 92, 246, 0.25));
+  }
+}

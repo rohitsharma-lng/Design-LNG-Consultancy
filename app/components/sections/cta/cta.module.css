@@ -1,0 +1,47 @@
+.cta-container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.cta-sec {
+    background: url('/images/cta-bg.png') no-repeat center;
+    background-size: cover;
+    border-radius: 32px;
+    overflow: hidden;
+    padding: 80px 60px;
+    background-color: var(--theme);
+}
+
+.cta-heading {
+    color: var(--text-white);
+    text-align: center;
+    font-size: clamp(30px, 3.5vw, 52px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -2px;
+    max-width: 700px;
+}
+
+.cta-desc {
+    color: var(--text-dull);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 515px;
+}
+
+@media (max-width: 1024px) {
+    .cta-sec {
+        padding: 60px 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .cta-sec {
+        padding: 40px 20px;
+        border-radius: 20px;
+    }
+}

@@ -1,0 +1,209 @@
+.ser-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.ser-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.ser-card {
+  position: relative;
+  border-top-left-radius:10px;
+  border-top-right-radius:50px;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:10px;
+  padding: 30px;
+  min-height: 280px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ser-card:nth-child(2n) {
+  position: relative;
+  border-top-left-radius:50px;
+  border-top-right-radius:10px;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:50px;
+  padding: 30px;
+  min-height: 280px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ser-card:nth-child(3n) {
+  position: relative;
+  border-top-left-radius:50px;
+  border-top-right-radius:10px;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:50px;
+  padding: 30px;
+  min-height: 280px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ser-card:nth-child(4n) {
+  position: relative;
+  border-top-left-radius:10px;
+  border-top-right-radius:50px;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:10px;
+  padding: 30px;
+  min-height: 280px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ser-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.ser-card-1 {
+  background: linear-gradient(135deg, #5b4cdb 0%, #3730db 100%);
+}
+
+.ser-card-2 {
+  background: linear-gradient(135deg, #5b8fc7 0%, #3d6b9e 100%);
+}
+
+.ser-card-3 {
+  background: linear-gradient(135deg, #6bb5d8 0%, #4a9bc7 100%);
+}
+
+.ser-card-4 {
+  background: linear-gradient(135deg, #3ecfc4 0%, #2ab6ac 100%);
+}
+
+.ser-card-5 {
+  background: linear-gradient(135deg, #6b7ce6 0%, #4f5dd6 100%);
+}
+
+.ser-card-6 {
+  background: linear-gradient(135deg, #7d6bc7 0%, #6251b8 100%);
+}
+
+.ser-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.ser-icon {
+  width: 32px;
+  height: 32px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ser-title {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+.ser-title:before{content:''; width:60px; height: 3px; background: #fff; opacity: 0.5; position: absolute; left:0; bottom: -10px;}
+.ser-description {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 16px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.ser-decoration {
+  position: absolute;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.ser-decoration-circles {
+  right: 0px;
+  top: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.ser-decoration-gear {
+  right: 40px;
+  bottom: 40px;
+  width: 180px;
+  height: 180px;
+}
+
+.ser-decoration-network {
+  right: 60px;
+  bottom: 60px;
+  width: 160px;
+  height: 160px;
+}
+
+/* Mobile: Show one card at a time */
+@media (max-width: 767px) {
+  .ser-container {
+    padding: 20px;
+  }
+
+  .ser-grid {
+    gap: 16px;
+  }
+
+  .ser-card {
+    padding: 20px;
+    min-height: 240px;
+  }
+
+  .ser-title {
+    font-size: 24px;
+  }
+
+  .ser-description {
+    font-size: 15px;
+  }
+}
+
+/* Desktop: 2 column grid */
+@media (min-width: 768px) {
+  .ser-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+/* Larger screens */
+@media (min-width: 1024px) {
+  .ser-container {
+    padding: 60px 0px;
+  }
+
+  .ser-card {
+    padding: 30px;
+  }
+}
+
+
+/* In your CSS module */
+@keyframes ces-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+.ser-decoration-circles circle:nth-child(1) { animation: ces-float 3s ease-in-out infinite; }
+.ser-decoration-circles circle:nth-child(2) { animation: ces-float 3s ease-in-out infinite; animation-delay: 0.6s; }
+.ser-decoration-circles circle:nth-child(3) { animation: ces-float 3s ease-in-out infinite; animation-delay: 1.2s; }
+.ser-decoration-circles circle:nth-child(4) { animation: ces-float 3s ease-in-out infinite; animation-delay: 1.8s; }

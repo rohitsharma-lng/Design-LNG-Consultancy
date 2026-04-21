@@ -1,26 +1,561 @@
 @import "tailwindcss";
 
+@theme {
+  --container-max-width: 1200px;
+}
+
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --theme:               #0A0E17;
+    --primary:             #3719CA;
+    --text-white:          #FFFFFF;
+    --text-black:          #000000;
+    --text-yellow:         #FDC448;
+    --text-dull:           #8B92A8;
+    --text-heading:        #E8EAF0;
+    --top-heading:         #1DD1E8;
+
+    --color-bg:            #0A0E17;
+    --color-primary:       #3719CA;
+    --color-accent:        #1DD1E8;
+    --color-text-white:    #FFFFFF;
+    --color-text-black:    #000000;
+    --color-text-heading:  #E8EAF0;
+    --color-text-dull:     #8B92A8;
+    --color-text-yellow:   #FDC448;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+html,
+html body {
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), sans-serif;
+  background-color: var(--color-bg);
+  /* background-image: url('/images/bg-single-box.png'); */
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('/images/bg-single-box.png') center repeat;
+  opacity: 0.06;
+  z-index: -1;
+}
+
+section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 1024px) {
+  section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+
+
+.sec-top-line {
+  width: 28px;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.sec-top-heading {
+  color: var(--color-accent);
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.sec-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px rgba(55, 25, 202, 0.6);
+}
+
+.section-heading {
+  color: var(--color-text-heading);
+  text-align: center;
+  font-size: clamp(30px, 3.5vw, 52px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -2px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.grad {
+  background: linear-gradient(104deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.head-description {
+  color: var(--color-text-dull);
+  text-align: center;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.nl-grad-line {
+  width: 60px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+/* ── Button Styles ─────────────────────────────────────── */
+
+/* Gradient CTA base — use with cta-sec-btn, ser-banner-cta-btn, cta-2-btn */
+.btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 100px;
+  background: linear-gradient(103deg, #3719CA 0%, #1DD1E8 100%);
+  color: var(--text-white);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  box-shadow:
+    0 10px 30px rgba(55, 25, 202, 0.4),
+    0 0 20px rgba(29, 209, 232, 0.3);
+  background: linear-gradient(103deg, #4a2be2 0%, #2be4ff 100%);
+}
+
+/* Banner search arrow */
+.search-arrow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  flex-shrink: 0;
+  text-decoration: none;
+  background: linear-gradient(135deg, #3719CA 0%, #1DD1E8 100%);
+  transition: opacity 0.2s ease;
+}
+
+.search-arrow-btn:hover {
+  opacity: 0.85;
+}
+
+.search-arrow-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* CTA section button */
+.cta-sec-btn {
+  padding: 17px 72px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22.8px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Services banner CTA button */
+.ser-banner-cta-btn {
+  padding: 17px 50px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22.8px;
+  margin-top: 20px;
+}
+
+.ser-banner-cta-btn:active {
+  box-shadow:
+    0 10px 30px rgba(55, 25, 202, 0.4),
+    0 0 20px rgba(29, 209, 232, 0.3);
+  background: linear-gradient(103deg, #4a2be2 0%, #2be4ff 100%);
+}
+
+.ser-banner-cta-arrow {
+  font-size: 1.1em;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.ser-banner-cta-btn:hover .ser-banner-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Tech stack filter button */
+.filter-btn {
+  padding: 7px 20px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-dull);
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  color: var(--text-white);
+}
+
+.filter-btn.active {
+  background: #141929;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--text-white);
+}
+
+/* Case study CTA button */
+.cs-cta-button {
+  background: linear-gradient(146.284deg, rgb(74, 43, 226) 0%, rgb(55, 25, 202) 100%);
+  border-radius: 100px;
+  padding: 10px 26px;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 50px;
+  width: 240px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 20px rgba(74, 43, 226, 0.4);
+}
+
+/* Case study nav buttons */
+.cs-nav-button {
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+  background: rgba(20, 18, 40, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.cs-nav-button:hover {
+  background: rgba(30, 28, 50, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cs-nav-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cs-nav-button:hover svg path {
+  stroke-opacity: 0.8;
+}
+
+/* CTA type 2 button */
+.cta-2-btn {
+  background: var(--G31, linear-gradient(104deg, #3719CA 25.48%, #1DD1E8 85.1%));
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.cta-2-btn:hover {
+  background: linear-gradient(104deg, #4a2be2 25.48%, #2be4ff 85.1%);
+}
+
+/* Industries learn more button */
+.ind-learn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: 1px solid rgba(29, 209, 232, 0.22);
+  color: var(--top-heading);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+  max-width: fit-content;
+  justify-content: center;
+}
+
+.ind-learn-btn:hover {
+  background: rgba(29, 209, 232, 0.08);
+  border-color: #1DD1E8;
+  color: #1DD1E8;
+}
+
+.ind-learn-btn .ind-arrow {
+  transition: transform 0.2s;
+}
+
+.ind-learn-btn:hover .ind-arrow {
+  transform: translateX(4px);
+}
+
+/* Why choose us nav button */
+.whylng-nav-button {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+  background: rgba(20, 18, 40, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.whylng-nav-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.whylng-nav-button:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.whylng-nav-button:hover {
+  background: rgba(20, 18, 40, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.whylng-nav-button:active {
+  transform: scale(0.95);
+}
+
+.whylng-button-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.whylng-nav-button:hover .whylng-button-icon {
+  transform: scale(1.2);
+}
+
+/* Development process tab button */
+.dp-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: none;
+  color: var(--color-text-dull);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dp-tab:focus,
+.dp-tab:focus-visible {
+  outline: none;
+}
+
+.dp-tab:hover {
+  color: var(--color-text-white);
+  border-color: rgba(29, 209, 232, 0.25);
+  background: rgba(29, 209, 232, 0.04);
+}
+
+.dp-tab-active,
+.dp-tab-active:hover {
+  background: linear-gradient(104deg, #3719CA 25%, #1DD1E8 100%);
+  color: var(--color-text-white);
+  border-color: transparent;
+  box-shadow:
+    0 8px 24px rgba(55, 25, 202, 0.35),
+    0 0 18px rgba(29, 209, 232, 0.25);
+}
+
+.dp-tab-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.dp-tab-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dp-tab-label {
+  line-height: 1;
+}
+
+/* Slide indicator button */
+.whylng-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.whylng-indicator:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.2);
+}
+
+.whylng-indicator-active {
+  width: 32px;
+  background: linear-gradient(to right, #2d96f0, #02a7bc);
+  box-shadow: 0 4px 15px rgba(45, 150, 240, 0.5);
+}
+
+/* ── Button responsive overrides ───────────────────────── */
+
+@media screen and (max-width: 1024px) {
+  .ind-learn-btn {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .whylng-nav-button {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ser-banner-cta-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+  }
+
+  .cs-nav-button {
+    display: none;
+  }
+
+  .cs-cta-button {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .whylng-nav-button {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cta-sec-btn {
+    padding: 15px 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .filter-btn {
+    padding: 6px 11px;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
+
+  .whylng-nav-button {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  .dp-tab {
+    padding: 8px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ser-banner-cta-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ser-banner-cta-btn,
+  .ser-banner-cta-arrow {
+    transition: none;
+  }
 }

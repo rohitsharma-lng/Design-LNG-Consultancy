@@ -1,0 +1,137 @@
+.ser-banner-section {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ser-banner-video-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ser-banner-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Fallback poster image when video is not supported */
+.ser-banner-video-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.ser-banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+      opacity: 0.7;
+  background: linear-gradient(135deg, #0a0f23de 0%, #0f193ccc 40%, #0a0a1ec4 100%);
+}
+
+.ser-banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ser-banner-heading {
+  font-size: clamp(30px, 3.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.ser-banner-heading-highlight {
+  background: linear-gradient(104deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.ser-banner-subheading {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(220, 230, 255, 0.88);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.01em;
+}
+
+.ser-banner-subheading-bold {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ser-banner-cta-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .ser-banner-section {
+    height: 50vh;
+  }
+
+  .ser-banner-content {
+    padding: 3rem 1.25rem;
+  }
+
+  .ser-banner-heading {
+    font-size: clamp(1.75rem, 8vw, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .ser-banner-subheading {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ser-banner-heading {
+    font-size: clamp(1.5rem, 9vw, 2rem);
+  }
+
+  .ser-banner-subheading {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}

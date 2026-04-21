@@ -1,0 +1,112 @@
+.ces-section {
+  width: 100%;
+  padding: 64px 40px;
+  box-sizing: border-box;
+}
+
+.ces-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ces-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 0;
+}
+
+/* Each card: icon on top, title, description, bottom border */
+.ces-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Last two cards (bottom row) — no bottom border */
+.ces-card:nth-child(3),
+.ces-card:nth-child(4) {
+  border-bottom: none;
+}
+
+.ces-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #1c2040 0%, #12162e 100%);
+  border: 1px solid rgba(90, 110, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+}
+
+.ces-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.ces-card-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.ces-card-desc {
+  font-size: 0.92rem;
+  color: #7e8fae;
+  line-height: 1.78;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+  .ces-section {
+    padding: 48px 24px;
+  }
+
+  .ces-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Restore border for card 3 on single-column layout */
+  .ces-card:nth-child(3) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Only remove border from the very last card */
+  .ces-card:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .ces-section {
+    padding: 32px 16px;
+  }
+
+  .ces-card {
+    padding: 28px 0;
+  }
+
+  .ces-card-title {
+    font-size: 1rem;
+  }
+
+  .ces-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ces-icon {
+    width: 30px;
+    height: 30px;
+  }
+}

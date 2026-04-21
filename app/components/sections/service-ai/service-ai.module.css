@@ -1,0 +1,262 @@
+.aihld-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  background: linear-gradient(159.02deg, rgb(17, 24, 40) 0%, rgb(21, 29, 46) 33.333%, rgb(17, 24, 40) 60%, rgb(19, 26, 43) 100%);
+  padding: 0px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.aihld-content-container {
+  position: relative;
+  z-index: 2;
+  margin: 0 ;
+  width: 70%;
+  padding: 40px;
+  flex: 0 0 70%;
+}
+
+
+/* Heading Section */
+.aihld-heading-section {
+  margin-bottom: 32px;
+}
+
+.aihld-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  line-height: 48px;
+  color: white;
+  margin: 0;
+}
+
+.aihld-heading-light {
+  font-weight: 300;
+}
+
+.aihld-heading-semibold {
+  font-weight: 600;
+}
+
+.aihld-gradient-text {
+  background: linear-gradient(104deg, var(--color-primary), var(--color-accent));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* Description */
+.aihld-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  color: #8b92a8;
+  margin: 0 0 32px 0;
+  max-width: 770px;
+}
+
+/* Features List */
+.aihld-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 40px;
+  max-width: 770px;
+}
+
+.aihld-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.aihld-feature-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+
+.aihld-feature-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 44px;
+  color: #8b92a8;
+  margin: 0;
+}
+
+.aihld-cta-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22.8px;
+  color: white;
+  margin: 0;
+}
+
+.aihld-cta-arrow {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Hero Image */
+.aihld-hero-image-container {
+  right: 0;
+  top: 0;
+  width: 30%;
+  height: auto;
+  pointer-events: none;
+  flex: 0 0 30%;
+}
+
+.aihld-hero-image-mask {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.aihld-hero-image {
+  left:0%;
+  top: 0;
+  width: 100%;
+  height:  100%;
+  max-width: none;
+}
+
+/* Decorative Overlay */
+.aihld-decorative-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 772px;
+  height: 100%;
+  opacity: 0.5;
+  pointer-events: none;
+  border-radius: 24px;
+  background: linear-gradient(119.148deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 60%);
+}
+
+/* Responsive Design */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .aihld-wrapper {
+    padding: 30px 24px;
+  }
+
+  .aihld-heading {
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .aihld-description {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .aihld-features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .aihld-hero-image-container {
+    width: 20%;
+    height: 100%;
+    right: 0px;
+  }
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+  .aihld-wrapper {
+    border-radius: 16px;
+    padding: 0;
+    margin: 0 20px;
+    width: auto;
+    height: inherit;
+    max-width: inherit;
+    flex-direction: column;
+  }
+  .aihld-content-container{padding: 20px; flex: 0 0 100%;  width: 100%;}
+
+  .aihld-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .aihld-description {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+
+  .aihld-features-grid {
+    margin-bottom: 32px;
+    gap: 12px;
+  }
+
+  .aihld-feature-text {
+    font-size: 14px;
+    line-height: 36px;
+  }
+
+  .aihld-feature-icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 8px;
+  }
+
+  .aihld-cta-button {
+    padding: 14px 24px 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .aihld-cta-text {
+    font-size: 15px;
+  }
+
+  .aihld-hero-image-container {
+            flex: inherit;
+        width: 100%;
+        height: 230px; 
+    margin-top: 20px;
+  }
+  .aihld-features-grid {
+        margin-bottom: 10px;
+    }
+  .aihld-decorative-overlay {
+    width: 100%;
+  }
+}
+
+/* Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+  .aihld-wrapper {
+    padding: 0px 0px;
+  }
+
+  .aihld-heading {
+    font-size: 42px;
+    line-height: 56px;
+  }
+
+  .aihld-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .aihld-hero-image-container {
+    width: 30%;
+    height: auto;
+  }
+}

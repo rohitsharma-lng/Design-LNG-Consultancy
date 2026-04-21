@@ -1,0 +1,207 @@
+/* ============== Tabs row ============== */
+
+.dp-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 1100px;
+    margin: 0 auto 36px;
+    padding: 0 8px;
+}
+
+/* ============== Body grid ============== */
+
+.dp-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+@media (max-width: 960px) {
+    .dp-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============== Left card ============== */
+
+.dp-card {
+    position: relative;
+    border-radius: 14px;
+    padding: 28px 28px 26px;
+    background: linear-gradient(160deg, rgba(20, 26, 48, 0.85), rgba(10, 14, 23, 0.7));
+    border: 1px solid rgba(29, 209, 232, 0.18);
+    box-shadow: inset 0 0 40px rgba(29, 209, 232, 0.04);
+    overflow: hidden;
+    isolation: isolate;
+    animation: dp-card-in 0.45s ease both;
+}
+
+.dp-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(29, 209, 232, 0.10), transparent 60%);
+    filter: blur(20px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes dp-card-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.dp-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(29, 209, 232, 0.12);
+    border: 1px solid rgba(29, 209, 232, 0.25);
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.dp-card-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.dp-card-title {
+    color: var(--color-text-white);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 14px;
+}
+
+.dp-card-desc {
+    color: var(--color-text-dull);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 22px;
+    max-width: 460px;
+}
+
+/* Tags */
+.dp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+}
+
+.dp-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(29, 209, 232, 0.08);
+    border: 1px solid rgba(29, 209, 232, 0.25);
+    color: var(--color-accent);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Feature row */
+.dp-features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dp-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.25s ease;
+    text-align: center;
+}
+
+.dp-feature:hover {
+    background: rgba(29, 209, 232, 0.06);
+    border-color: rgba(29, 209, 232, 0.3);
+    transform: translateY(-2px);
+}
+
+.dp-feature-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dp-feature-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.dp-feature-label {
+    color: var(--color-text-dull);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+/* ============== Right canvas ============== */
+
+.dp-canvas-wrap {
+    position: relative;
+    border-radius: 14px;
+    min-height: 420px;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+}
+
+.dp-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+@media (max-width: 960px) {
+    .dp-canvas-wrap {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 540px) {
+    .dp-card {
+        padding: 22px 20px;
+    }
+    .dp-card-title {
+        font-size: 20px;
+    }
+    .dp-features {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+    }
+    .dp-canvas-wrap {
+        min-height: 300px;
+    }
+}

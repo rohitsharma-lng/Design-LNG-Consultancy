@@ -1,0 +1,193 @@
+/* WRAPPER */
+.nl-marquee-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* FADE EDGES */
+.nl-marquee-wrapper::before,
+.nl-marquee-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.nl-marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+.nl-marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+/* MARQUEE ROW */
+.nl-marquee {
+    overflow: hidden;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* TRACK */
+.nl-track {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: max-content;
+    will-change: transform;
+}
+
+/* LOGO CARD */
+.nl-item {
+    min-width: 260px;
+    height: 115px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nl-item img {
+    object-fit: contain;
+    aspect-ratio: 3/2;
+    position: relative;
+    z-index: 1;
+}
+
+/* Shared radial highlight overlay */
+.nl-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(70.71% 70.71% at 50% 50%,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(255, 255, 255, 0.00) 65%);
+}
+
+/* Hover lift */
+.nl-item:hover {
+    transform: scale(1.05) translateY(-3px);
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Overflow visible on hovered row so lifted card isn't clipped */
+.nl-marquee:has(.nl-item:hover) {
+    overflow: visible !important;
+}
+
+/* Pause animation on hover */
+.nl-marquee:hover .nl-track {
+    animation-play-state: paused;
+}
+
+/* ── Per-brand gradient backgrounds ────────────────────── */
+.prodigy {
+    background: radial-gradient(98.99% 70.71% at 50% 70%,
+        rgba(139, 92, 246, 0.20) 0%,
+        rgba(55, 25, 202, 0.10) 40%,
+        rgba(12, 16, 36, 0.95) 100%);
+}
+
+.mediclinic {
+    background: radial-gradient(98.99% 70.71% at 50% 70%,
+        rgba(0, 200, 150, 0.20) 0%,
+        rgba(0, 120, 100, 0.10) 40%,
+        rgba(12, 16, 36, 0.95) 100%);
+}
+
+.sony {
+    border: 1px solid rgba(196, 113, 245, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(196, 113, 245, 0.18) 0%, rgba(139, 34, 82, 0.10) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.forever {
+    border: 1px solid rgba(55, 25, 202, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(55, 25, 202, 0.20) 0%, rgba(29, 209, 232, 0.08) 50%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.wefix {
+    border: 1px solid rgba(218, 165, 32, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(218, 165, 32, 0.20) 0%, rgba(184, 134, 11, 0.08) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.idm {
+    border: 1px solid rgba(100, 170, 68, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(100, 170, 68, 0.20) 0%, rgba(100, 170, 68, 0.06) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.sanlam {
+    border: 1px solid rgba(0, 139, 206, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(0, 139, 206, 0.20) 0%, rgba(0, 139, 206, 0.06) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.skea {
+    border: 1px solid rgba(45, 212, 191, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(45, 212, 191, 0.18) 0%, rgba(29, 209, 232, 0.06) 50%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.truworths {
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(139, 92, 246, 0.20) 0%, rgba(55, 25, 202, 0.10) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.rheumera {
+    border: 1px solid rgba(29, 209, 232, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(29, 209, 232, 0.18) 0%, rgba(14, 61, 94, 0.10) 50%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.kgc {
+    border: 1px solid rgba(0, 116, 142, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(0, 116, 142, 0.20) 0%, rgba(244, 171, 34, 0.08) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.lexis {
+    border: 1px solid rgba(235, 31, 31, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(235, 31, 31, 0.15) 0%, rgba(12, 16, 36, 0.95) 70%);
+}
+
+.santam {
+    border: 1px solid rgba(254, 199, 0, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(254, 199, 0, 0.20) 0%, rgba(0, 58, 120, 0.10) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.debt-buster {
+    border: 1px solid rgba(100, 170, 68, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(100, 170, 68, 0.20) 0%, rgba(100, 170, 68, 0.06) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+.loto {
+    border: 1px solid rgba(196, 113, 245, 0.12);
+    background: radial-gradient(98.99% 70.71% at 50% 70%, rgba(196, 113, 245, 0.18) 0%, rgba(139, 34, 82, 0.10) 40%, rgba(12, 16, 36, 0.95) 100%);
+}
+
+/* ── Scroll animations ──────────────────────────────────── */
+.nl-left {
+    animation: nl-scroll-left 50s linear infinite;
+}
+
+.nl-right {
+    animation: nl-scroll-right 50s linear infinite;
+}
+
+@keyframes nl-scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes nl-scroll-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}

@@ -1,0 +1,562 @@
+/* ── Inner nav wrapper ──────────────────────────────────── */
+.nl-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    box-sizing: border-box;
+}
+
+/* ── Hamburger toggle ───────────────────────────────────── */
+.nl-toggler {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    line-height: 0;
+    flex-shrink: 0;
+}
+
+/* ── BASE nav ───────────────────────────────────────────── */
+.nav-bg {
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+    max-width: 1360px;
+    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    transition:
+        width 0.3s ease,
+        top 0.3s ease,
+        padding 0.3s ease,
+        border-radius 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+/* ── AUTO-HIDE (slides up & fades out after 3 s idle) ───── */
+.nav-bg.header-hidden {
+    transform: translateX(-50%) translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Disable auto-hide on mobile — drawer is a child of nav so the transform breaks it */
+@media (max-width: 1023px) {
+    .nav-bg.header-hidden {
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* ── SCROLLED ───────────────────────────────────────────── */
+.nav-bg.scrolled {
+    width: 84%;
+    top: 12px;
+    padding:2px 8px;
+    box-sizing: border-box;
+    border-radius: 100px;
+    border: 0.889px solid rgba(255, 255, 255, 0.10);
+    background: rgba(8, 10, 22, 0.70);
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.20),
+        0 0 24px rgba(55, 25, 202, 0.12);
+}
+
+/* ── Nav links ──────────────────────────────────────────── */
+.nl-navbar-nav .nav-link {
+    color: var(--text-dull);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.nl-navbar-nav .nav-link.active,
+.nl-navbar-nav .nav-link.open {
+    color: var(--text-white);
+}
+
+.menu-drp-icon {
+    transition: 0.3s;
+}
+
+.nl-navbar-nav .nav-link.open .menu-drp-icon {
+    transform: rotate(180deg);
+}
+
+.nl-navbar-nav .nav-link.open .menu-drp-icon g {
+    opacity: 1;
+}
+
+/* ── AI search submit button ────────────────────────────── */
+.nav-ai-search {
+    right: 6px;
+    border: transparent;
+    z-index: 2;
+    display: flex;
+    top: 4px;
+    width: 32px;
+    height: 32px;
+    padding: 0 9px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    opacity: 1;
+    border-radius: 14px;
+    background: var(--Gradient, linear-gradient(135deg, #3719CA 0%, #1DD1E8 100%));
+}
+
+/* ── CTA button ─────────────────────────────────────────── */
+.nl-nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 26px;
+    box-sizing: border-box;
+    border-radius: 100px;
+    background: linear-gradient(135.85deg, #4a2be2 0%, #3719ca 100%);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 19.2px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s, transform 0.15s, background 0.3s;
+    flex-shrink: 0;
+}
+
+.nl-nav-cta:hover {
+    background: linear-gradient(135.85deg, #3719ca 0%, #4a2be2 100%);
+    transform: scale(1.04);
+}
+
+/* ── AI searchbar ───────────────────────────────────────── */
+.ai-searchbar {
+    border-radius: 14px;
+    background: rgba(29, 36, 65, 0.90);
+    border: transparent;
+    padding: 0.5rem .3rem .5rem 2rem;
+    font-size: 16px;
+    outline: none;
+    color: var(--text-dull);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ai-svg {
+    position: absolute;
+    z-index: 2;
+    left: 20px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ai-searchbar:focus {
+    color: var(--text-dull);
+    background-color: rgba(29, 36, 65, 0.90);
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.ai-searchbar::placeholder {
+    color: var(--text-dull);
+    opacity: 0.7;
+}
+
+/* ── Desktop AI search container ───────────────────────── */
+.nl-ai-search {
+    width: 100%;
+    max-width: 407px;
+    display: none !important;
+}
+
+/* ── Dropdown menu ──────────────────────────────────────── */
+.nl-dropdown-menu {
+    position: absolute !important;
+    top: calc(100% + 14px) !important;
+    left: 50% !important;
+
+    transform: translateX(-30%) translateY(-10px) scale(0.96);
+    transform-origin: top center;
+
+    background: rgba(12, 16, 28, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: transparent;
+    border-radius: 14px;
+    list-style: none;
+    margin: 0;
+
+    padding: 10px 14px;
+    min-width: fit-content;
+    box-sizing: border-box;
+
+    display: block;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index: 9999;
+}
+
+/* Dropdown show state */
+.nl-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-30%) translateY(0) scale(1);
+    min-height: fit-content;
+    min-width: 240px;
+}
+
+/* ── Nav menu (collapse / drawer) ───────────────────────── */
+.nl-nav-menu {
+    overflow: visible;
+    margin-top: 12px;
+    padding-bottom: 16px;
+    box-sizing: border-box;
+}
+
+/* ── Dropdown icon wrapper ──────────────────────────────── */
+.nl-li-dropdown-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(55, 25, 202, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nl-li-dropdown-icon img {
+    width: 14px;
+    height: 14px;
+    display: block;
+}
+
+/* ── Dropdown items ─────────────────────────────────────── */
+.dropdown-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    transition: 0.3s ease;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text-dull);
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.dropdown-item:hover {
+    background: #111030;
+    color: var(--text-white);
+}
+
+.li-dropdown-label {
+    font-size: 14px;
+    line-height: 19.5px;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+/* ── Logo visibility ────────────────────────────────────── */
+.logo-shape {
+    display: none;
+}
+
+.nav-bg.scrolled .logo-shape {
+    display: block;
+}
+
+.nav-bg.scrolled .nav-logo {
+    display: none;
+}
+
+.nav-bg.scrolled .small-nav-bar {
+    display: none;
+}
+
+.nav-bg.scrolled .nl-ai-search {
+    display: block !important;
+}
+
+/* ── Mobile menu overlay ────────────────────────────────── */
+.nl-menu-overlay { display: none !important; }
+
+/* ── Mobile top-bar search ──────────────────────────────── */
+.nl-mobile-topbar-search {
+    display: none;
+    flex: 1;
+    margin: 0 10px;
+}
+
+/* ── Close button ───────────────────────────────────────── */
+.nl-menu-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-white);
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-left: auto;
+    transition: background 0.2s;
+}
+
+.nl-menu-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE  (≤ 1023px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+
+    /* Remove transform so fixed children (drawer) stay viewport-relative */
+    .nav-bg {
+        left: 0;
+        transform: none;
+    }
+
+    .nav-bg.scrolled {
+        left: 4%;
+        width: 92%;
+        top: 12px;
+        padding: 8px;
+        box-sizing: border-box;
+        border-radius: 100px;
+        border: 0.889px solid rgba(255, 255, 255, 0.10);
+        background: rgba(8, 10, 22, 0.70);
+        box-shadow:
+            0 8px 40px rgba(0, 0, 0, 0.35),
+            inset 0 1px 1px rgba(255, 255, 255, 0.08),
+            inset 0 -1px 2px rgba(0, 0, 0, 0.20),
+            0 0 24px rgba(55, 25, 202, 0.12);
+    }
+
+    .nav-bg.scrolled:has(.nl-nav-menu.open) {
+        border-radius: 20px;
+    }
+
+    /* Show hamburger on mobile */
+    .nl-toggler {
+        display: flex;
+    }
+
+    /* Full-screen slide-in drawer */
+    .nl-nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(8, 10, 22, 0.98) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        border: none !important;
+        z-index: 1050 !important;
+        padding: 24px 20px !important;
+        box-sizing: border-box;
+        overflow-y: auto !important;
+        margin-top: 0 !important;
+
+        display: block !important;
+        transform: translateX(100%);
+        transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        visibility: visible !important;
+    }
+
+    .nl-nav-menu.open {
+        transform: translateX(0) !important;
+    }
+
+    /* Mobile accordion dropdown */
+    .nl-dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        backdrop-filter: none;
+        padding: 0;
+        margin-top: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: max-height 0.35s ease;
+        height: auto;
+        border-radius: 12px;
+        background: #0C0F1F;
+    }
+
+    /* Open state (accordion) */
+    .nav-item.dropdown.show .nl-dropdown-menu {
+        /* min-height: 500px; */
+        margin-top: 8px;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+
+    .nl-dropdown-menu.show {
+        padding: 12px 0;
+        box-sizing: border-box;
+    }
+
+    /* Nav links full-width */
+    .nl-navbar-nav .nav-link {
+        width: 100%;
+        font-size: 15px;
+        justify-content: space-between;
+        padding: 14px 4px;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Icon rotate on open */
+    .nav-item.dropdown.show .menu-drp-icon {
+        transform: rotate(180deg);
+    }
+
+    .nl-navbar-nav .nav-link.open .menu-drp-icon path {
+        stroke: var(--text-white);
+    }
+
+    .nav-bg.scrolled .nav-logo { display: none; }
+    .nav-bg.scrolled .logo-shape { display: block; }
+
+    /* Keep drawer items visible even in scrolled state on mobile */
+    .nav-bg.scrolled .nl-nav-menu .small-nav-bar { display: list-item; }
+
+    .nav-bg.scrolled .nl-mobile-topbar-search {
+        display: flex;
+    }
+
+    /* Hide drawer search when scrolled — top-bar handles it */
+    .nav-bg.scrolled .nl-ai-search {
+        display: none !important;
+    }
+
+    .nl-ai-search {
+        display: block !important;
+    }
+
+    .nl-menu-close {
+        display: flex;
+    }
+
+    .nl-nav-cta {
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .nl-ai-search {
+        max-width: 100%;
+        margin-top: 24px;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   DESKTOP  (≥ 1024px)
+   ════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+
+    /* Nav menu always visible as flex row */
+    .nl-nav-menu {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 0;
+        padding-bottom: 0;
+        gap: 0;
+        width: 100%;
+    }
+
+    /* Nav list */
+    .nl-navbar-nav {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-right: 2rem;
+    }
+
+    /* Tall click target with side padding */
+    .nav-item .nav-link {
+        padding: 20px 14px;
+        box-sizing: border-box;
+    }
+
+    /* Anchor dropdown relative to each nav item */
+    .nav-item.dropdown {
+        position: relative;
+    }
+
+    /* Transparent bridge that fills the gap between nav link and dropdown,
+       keeping the nav-item hovered so the dropdown stays visible. */
+    .nav-item.dropdown::after {
+        content: '';
+        position: absolute;
+        bottom: -14px;
+        left: 0;
+        right: 0;
+        height: 14px;
+    }
+
+    /* Show dropdown on hover */
+    .nav-item.dropdown:hover .nl-dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-30%) translateY(0) scale(1);
+        min-width: 240px;
+    }
+
+    /* Rotate chevron on hover */
+    .nav-item.dropdown:hover .menu-drp-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Active link color on hover */
+    .nav-item.dropdown:hover > .nav-link {
+        color: var(--text-white);
+    }
+
+    .nav-item.dropdown:hover .menu-drp-icon g {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,149 @@
+/* Container */
+.endtoend-container {
+ padding: 80px 0;
+  max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+/* Desktop Grid - 2 rows, 3 columns */
+.endtoend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+/* Mobile - Horizontal Scroll */
+@media (max-width: 1024px) {
+  .endtoend-grid {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
+  }
+  .endtoend-container {
+    padding: 0;
+    margin: 0 20px;
+  }
+  .endtoend-grid::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .endtoend-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .endtoend-grid::-webkit-scrollbar-thumb {
+    background: rgba(55, 25, 202, 0.5);
+    border-radius: 4px;
+  }
+
+  .endtoend-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(55, 25, 202, 0.7);
+  }
+}
+
+/* Card */
+.endtoend-card {
+  background: #181d36;
+  border-radius: 24px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  height: 290px;
+  min-width: 379px;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 1024px) {
+  .endtoend-card {
+    flex-shrink: 0;
+    width: 379px;
+  }
+  .endtoend-container {padding: 40px 0;}
+}
+
+@media (max-width: 480px) {
+  .endtoend-card {
+    min-width: 320px;
+    width: 320px;
+    padding: 20px 12px;
+  }
+}
+
+/* Icon Container */
+.endtoend-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(55, 25, 202, 0.125) 0%, rgba(29, 209, 232, 0.063) 100%);
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.endtoend-icon-border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(55, 25, 202, 0.21);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+/* Icon Image */
+.endtoend-icon-image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+/* Title */
+.endtoend-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+/* Description */
+.endtoend-description {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+@media (max-width: 480px) {
+  .endtoend-title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .endtoend-description {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}

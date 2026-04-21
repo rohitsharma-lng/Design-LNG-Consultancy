@@ -1,0 +1,169 @@
+/* ── Cards container ────────────────────────────────────── */
+.service-cards-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+}
+
+/* ── Individual card ────────────────────────────────────── */
+.service-card {
+    width: 100%;
+    max-width: 480px;
+    min-height: 320px;
+    border-radius: 50px 10px 50px 10px;
+    padding: 32px 30px 80px 30px;
+    position: relative;
+    box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+/* Gloss overlay on hover */
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-card:hover {
+    transform: scale(1.04);
+    box-shadow: 0px 20px 60px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Alternating alignment + border-radius */
+.service-card:nth-child(odd) {
+    align-self: flex-start;
+    border-radius: 10px 50px 10px 50px;
+}
+
+.service-card:nth-child(even) {
+    align-self: flex-end;
+    border-radius: 50px 10px 50px 10px;
+}
+
+/* Per-card background colours */
+.service-card-bg-1 { background: #4a44e3; }
+.service-card-bg-2 { background: #2d96f0; }
+.service-card-bg-3 { background: #1f4f9c; }
+.service-card-bg-4 { background: #03a7bc; }
+.service-card-bg-5 { background: #2e53b6; }
+.service-card-bg-6 { background: #2d96f0; }
+.service-card-bg-7 { background: #007382; }
+
+/* ── Card inner elements ────────────────────────────────── */
+.service-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.service-card-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+    line-height: 34.32px;
+    margin-bottom: 16px;
+    text-transform: capitalize;
+}
+
+.service-card-description {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 25.84px;
+}
+
+.service-card-icon {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 42px;
+    height: 42px;
+    background: white;
+    border-radius: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-card-icon {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.service-card-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ── Animated background pattern SVG ───────────────────── */
+.service-card-bg-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 280px;
+    opacity: 0.5;
+    pointer-events: none;
+    animation: service-pattern-float 20s ease-in-out infinite;
+}
+
+@keyframes service-pattern-float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25%       { transform: translate(-10px, 10px) rotate(5deg) scale(1.05); }
+    50%       { transform: translate(-15px, -10px) rotate(-5deg) scale(0.95); }
+    75%       { transform: translate(10px, -15px) rotate(3deg) scale(1.02); }
+}
+
+/* Staggered animation durations per card */
+.service-card:nth-child(1) .service-card-bg-pattern { animation-duration: 18s; }
+.service-card:nth-child(2) .service-card-bg-pattern { animation-duration: 22s; animation-delay: -2s; }
+.service-card:nth-child(3) .service-card-bg-pattern { animation-duration: 20s; animation-delay: -4s; }
+.service-card:nth-child(4) .service-card-bg-pattern { animation-duration: 24s; animation-delay: -1s; }
+.service-card:nth-child(5) .service-card-bg-pattern { animation-duration: 19s; animation-delay: -3s; }
+.service-card:nth-child(6) .service-card-bg-pattern { animation-duration: 21s; animation-delay: -5s; }
+.service-card:nth-child(7) .service-card-bg-pattern { animation-duration: 23s; animation-delay: -2.5s; }
+
+/* ── Scroll sentinel ────────────────────────────────────── */
+.service-scroll-sentinel {
+    height: 1px;
+    width: 100%;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .service-card {
+        max-width: 80%;
+        min-height: 280px;
+    }
+
+    .service-card-title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .service-card-description {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card-title {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
