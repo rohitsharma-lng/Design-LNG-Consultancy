@@ -561,6 +561,7 @@ const DevelopmentProcess = () => {
               onClick={() => setActiveTab(i)}
               className={`dp-tab ${i === activeTab ? 'dp-tab-active' : ''}`}
               aria-pressed={i === activeTab}
+              suppressHydrationWarning
             >
               <span className="dp-tab-icon">{t.tabIcon}</span>
               <span className="dp-tab-label">{t.label}</span>

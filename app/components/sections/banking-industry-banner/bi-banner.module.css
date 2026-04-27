@@ -1,0 +1,96 @@
+.bi-banner-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.bi-banner-video-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bi-banner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+
+}
+
+.bi-banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(2rem, 3.5vw, 5rem) clamp(1rem, 3vw, 2rem) 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* Scoped heading override — keeps global .section-heading untouched
+   but tightens the BI banner so copy fits in the upper third, above
+   the video's centerpiece graphics. */
+.bi-banner-heading {
+  font-size: clamp(28px, 2.6vw, 44px) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -1px !important;
+  max-width: 880px !important;
+  margin: 0 auto !important;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .bi-banner-content {
+    padding-top: clamp(4rem, 8vw, 6rem);
+  }
+}
+
+/* Mobile landscape / small tablets */
+@media (max-width: 768px) {
+  .bi-banner-section {
+    min-height: 560px;
+  }
+
+  .bi-banner-content {
+    padding: 5rem 1.25rem 1.5rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .bi-banner-section {
+    min-height: 520px;
+  }
+
+  .bi-banner-content {
+    padding: 4.5rem 1rem 1.25rem;
+  }
+}
+
+/* Short viewports */
+@media (max-height: 600px) {
+  .bi-banner-content {
+    padding-top: 4.5rem;
+  }
+}
+
+/* Wide desktops */
+@media (min-width: 1600px) {
+  .bi-banner-content {
+    max-width: 1360px;
+    padding-top: clamp(3rem, 3vw, 5rem);
+  }
+}

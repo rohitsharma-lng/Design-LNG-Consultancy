@@ -1,0 +1,137 @@
+.cu-container {
+  max-width: var(--container-max-width);
+}
+
+.cu-heading {
+  color: var(--color-text-heading);
+  font-size: clamp(30px, 3.2vw, 46px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.cu-desc {
+  color: var(--color-text-dull);
+  font-size: 16px;
+  line-height: 28px;
+  max-width: 440px;
+}
+
+.cu-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px 14px 16px;
+  border-radius: 5px 20px 5px 20px;
+  color: var(--color-text-white);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.cu-contact-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.cu-contact-btn--phone {
+  background: #2B9BE8;
+}
+
+.cu-contact-btn--email {
+  background: #1A2140;
+}
+
+.cu-contact-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  flex-shrink: 0;
+}
+
+.cu-contact-btn--email .cu-contact-icon {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cu-card {
+  background: linear-gradient(180deg, rgba(17, 22, 46, 0.9) 0%, rgba(12, 16, 34, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: clamp(24px, 3vw, 44px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.cu-card-title {
+  color: var(--color-text-white);
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cu-card-subtitle {
+  color: var(--color-text-dull);
+  font-size: 14px;
+  line-height: 22px;
+  margin: 12px 0 24px;
+}
+
+.cu-input {
+  background: rgba(10, 14, 23, 0.6);
+  border: 1px solid rgba(29, 209, 232, 0.18);
+  border-radius: 12px;
+  color: var(--color-text-white);
+  font-size: 14px;
+  padding: 16px 20px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cu-input:focus {
+  border-color: rgba(29, 209, 232, 0.5);
+  box-shadow: 0 0 0 3px rgba(29, 209, 232, 0.12);
+}
+
+.cu-textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.cu-captcha {
+  background: rgba(248, 249, 251, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 14px 18px;
+  width: 304px;
+  max-width: 100%;
+}
+
+.cu-captcha-check {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.cu-captcha-label {
+  color: #555;
+  font-size: 14px;
+}
+
+.cu-captcha-meta {
+  color: #9aa0a6;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.cu-submit {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+  width: 100%;
+}
