@@ -92,6 +92,7 @@ export default function FaqAccordion() {
               <button
                 className={styles['faqhld-question-button']}
                 onClick={() => toggleAccordion(index)}
+                suppressHydrationWarning
               >
                 <p className={`${styles['faqhld-question']} ${openIndex === index ? styles['faqhld-question-active'] : ''}`}>
                   {faq.question}

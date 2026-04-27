@@ -17,12 +17,16 @@ import SerHeroBanner from '../components/sections/services-banner/ServicesBanner
 import ChlPinnedCards from '../components/sections/challenges-pinned-cards/ChlPinnedCards'
 import Trusted from '../components/sections/ind-trusted-section/Trusted'
 import BiBanner from '../components/sections/banking-industry-banner/BiBanner'
+import ContactUsForm from '../components/sections/contactUsForm/contactUsForm'
+import CtaThree from '../components/sections/CTA-3/CtaThree'
+import Cglobal from '../components/sections/contact-global/Cglobal'
+import Clocation from '../components/sections/contact-locations/Clocation'
 
 export default function Review() {
   return (
     <>
-      <SerHeroBanner />
       <BiBanner />
+      <SerHeroBanner />
       <Client />
       <Stats />
       <Challenges />
@@ -54,6 +58,10 @@ export default function Review() {
         image="/images/ind-trusted-1.png"
         imageAlt="Banking app development"
       />
+      <ContactUsForm/>
+      <CtaThree/>
+      <Cglobal/>
+      <Clocation/>
     </>
   )
 }

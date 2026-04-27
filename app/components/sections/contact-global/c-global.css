@@ -1,0 +1,119 @@
+.cg-section {
+  position: relative;
+  background: var(--color-bg, #0A0E17);
+  overflow: hidden;
+}
+
+.cg-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Left content ────────────────────────────────────────── */
+.cg-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.cg-eyebrow {
+  display: inline-block;
+  color: var(--color-text-heading, #E8EAF0);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin-bottom: 14px;
+}
+
+.cg-eyebrow-grad {
+  background: linear-gradient(104deg, var(--color-primary, #3719CA), var(--color-accent, #1DD1E8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.cg-heading {
+  color: var(--color-text-heading, #E8EAF0);
+  font-size: clamp(34px, 4.6vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin: 0 0 20px;
+}
+
+.cg-description {
+  color: var(--color-text-dull, #8B92A8);
+  font-size: 15px;
+  line-height: 26px;
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ── Right image ─────────────────────────────────────────── */
+.cg-image-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.cg-image {
+  width: 100%;
+  height: auto;
+  max-width: 620px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 60px rgba(29, 209, 232, 0.15));
+}
+
+/* ── Tablet ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cg-container {
+    gap: 32px;
+  }
+
+  .cg-image {
+    max-width: 480px;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cg-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .cg-content {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .cg-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cg-image-wrap {
+    justify-content: center;
+    order: -1;
+  }
+
+  .cg-image {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cg-image {
+    max-width: 320px;
+  }
+}

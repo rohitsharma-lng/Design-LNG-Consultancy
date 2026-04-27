@@ -1,0 +1,154 @@
+.cta3-body {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    max-width: 1200px;
+    margin: auto;
+    min-height: 260px;
+    background: linear-gradient(90deg, #0B1034 0%, #141A4D 55%, #1F2454 100%);
+    isolation: isolate;
+}
+
+.cta3-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--cta3-border-angle, 0deg),
+        #0161FF 0deg,
+        #1DD1E8 90deg,
+        #3719CA 180deg,
+        #0161FF 270deg,
+        #0161FF 360deg
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: cta3-border-spin 6s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@property --cta3-border-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes cta3-border-spin {
+    to {
+        --cta3-border-angle: 360deg;
+    }
+}
+
+.cta3-content {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    flex: 1 1 auto;
+}
+
+.cta3-heading {
+    color: var(--text-white);
+    font-size: clamp(28px, 2.8vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.cta3-btn {
+    padding: 14px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.cta3-btn-solid {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    border-radius: 100px;
+    background: #1a2a6b;
+    color: var(--text-white);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta3-btn-solid:hover {
+    background: #25399a;
+    box-shadow: 0 8px 24px rgba(26, 42, 107, 0.45);
+}
+
+.cta3-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cta3-image img {
+    object-fit: cover;
+    object-position: right center;
+}
+
+.cta3-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            #0B1034 0%,
+            rgba(11, 16, 52, 0.96) 25%,
+            rgba(20, 26, 77, 0.7) 50%,
+            rgba(20, 26, 77, 0.35) 75%,
+            rgba(20, 26, 77, 0.15) 100%
+        );
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .cta3-body {
+        min-height: 0;
+    }
+    .cta3-image::after {
+        background: linear-gradient(
+            90deg,
+            #0B1034 0%,
+            rgba(11, 16, 52, 0.95) 35%,
+            rgba(20, 26, 77, 0.75) 70%,
+            rgba(20, 26, 77, 0.55) 100%
+        );
+    }
+    .cta3-content {
+        max-width: 100%;
+    }
+}
+
+/* Fallback for browsers without @property support */
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+    .cta3-body::before {
+        background: linear-gradient(120deg, #0161FF, #1DD1E8, #3719CA, #0161FF);
+        background-size: 300% 300%;
+        animation: cta3-border-shift 6s linear infinite;
+    }
+    @keyframes cta3-border-shift {
+        0%   { background-position: 0% 50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+}
