@@ -4,11 +4,15 @@ import { useState } from 'react'
 import Image from 'next/image'
 import './Clocation.css'
 
+type Office = {
+  city: string
+  address: string
+}
+
 type Location = {
   code: 'ZA' | 'AE' | 'IN'
   country: string
-  city: string
-  address: string
+  offices: Office[]
   phone: string
   map: string
 }
@@ -17,25 +21,45 @@ const locations: Location[] = [
   {
     code: 'ZA',
     country: 'South Africa',
-    city: 'Cape Town',
-    address: '4th Floor, Mutual Park, Pinelands, Capetown, South Africa - 7405.',
+    offices: [
+      {
+        city: 'Cape Town',
+        address: '4th Floor, Mutual Park, Pinelands, Capetown, South Africa - 7405.',
+      },
+    ],
     phone: '+27-849465127',
     map: '/images/sa-map.png',
   },
   {
     code: 'AE',
     country: 'UAE',
-    city: 'Dubai',
-    address: 'FZCO 421, Dubai Commercity, Dubai, United Arab Emirates.',
+    offices: [
+      {
+        city: 'Dubai',
+        address: 'FZCO 421, Dubai Commercity, Dubai, United Arab Emirates.',
+      },
+    ],
     phone: '+971-555079890',
     map: '/images/UAE-map.png',
   },
   {
     code: 'IN',
     country: 'India',
-    city: 'Amritsar',
-    address:
-      'SCO 6, Floor - 5, Dua Square, Ranjit Avenue, Block - B, Amritsar, Punjab, India - 143002.',
+    offices: [
+      {
+        city: 'Amritsar',
+        address:
+          'SCO 6, Floor - 5, Dua Square, Ranjit Avenue, Block - B, Amritsar, Punjab, India - 143002.',
+      },
+      {
+        city: 'Kolkata',
+        address: 'Worknests, Tower 2, Godrej Waterside, Sector V, Kolkata - 700091.',
+      },
+      {
+        city: 'Chandigarh',
+        address: '902, Bestech Towers, Mohali.',
+      },
+    ],
     phone: '+91-7717305144',
     map: '/images/INDIA-map.png',
   },
@@ -75,8 +99,15 @@ export default function Clocation() {
 
                 {isActive && (
                   <span className="cl-tab-body">
-                    <span className="cl-city">{loc.city}</span>
-                    <span className="cl-address">{loc.address}</span>
+                    {loc.offices.map((office, idx) => (
+                      <span key={office.city} className="cl-office">
+                        <span className="cl-city">{office.city}</span>
+                        <span className="cl-address">{office.address}</span>
+                        {idx < loc.offices.length - 1 && (
+                          <span className="cl-divider" aria-hidden="true" />
+                        )}
+                      </span>
+                    ))}
                     <span className="cl-phone-row">
                       <span className="cl-phone-label">Phone:</span>{' '}
                       <a
@@ -103,7 +134,7 @@ export default function Clocation() {
           <Image
             key={active.code}
             src={active.map}
-            alt={`Map of L&G office in ${active.city}, ${active.country}`}
+            alt={`Map of L&G office in ${active.country}`}
             className="cl-map"
             width={1100}
             height={760}

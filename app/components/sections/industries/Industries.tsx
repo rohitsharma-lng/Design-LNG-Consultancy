@@ -3,99 +3,121 @@
 import { useState } from 'react'
 import styles from './industries.module.css'
 
-const industries = [
+type Industry = {
+  name: string
+  tag: string
+  icon: React.ReactElement
+  items: string[]
+}
+
+const industries: Industry[] = [
   {
     name: 'Banking',
     tag: 'BFSI',
-    items: ['Smart digital banking app', 'Peer-to-Peer Lending app', 'Wealth management app', 'Digital lending systems'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
         <rect x="2" y="8" width="16" height="10" rx="1" stroke="url(#indIconGrad)" strokeWidth="1.5" />
         <path d="M4 8V6a6 6 0 0 1 12 0v2" stroke="url(#indIconGrad)" strokeWidth="1.5" />
         <rect x="8" y="11" width="4" height="4" rx="0.5" stroke="url(#indIconGrad)" strokeWidth="1.3" />
       </svg>
     ),
+    items: ['Smart digital banking app', 'Peer-to-Peer Lending app', 'Wealth management app', 'Digital lending systems'],
   },
   {
     name: 'FinTech',
     tag: 'FINTECH',
-    items: ['Payment gateway solutions', 'Blockchain & crypto platforms', 'Robo-advisory apps', 'Insurance tech platforms'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
         <circle cx="10" cy="10" r="7.5" stroke="url(#indIconGrad)" strokeWidth="1.5" />
-        <path d="M10 6v1.5M10 12.5V14M7.5 11a2.5 2.5 0 0 0 2.5 1.5 2 2 0 1 0 0-4 2 2 0 1 1 0-4A2.5 2.5 0 0 1 12.5 6" stroke="url(#indIconGrad)" strokeWidth="1.3" strokeLinecap="round" />
+        <path
+          d="M10 6v1.5M10 12.5V14M7.5 11a2.5 2.5 0 0 0 2.5 1.5 2 2 0 1 0 0-4 2 2 0 1 1 0-4A2.5 2.5 0 0 1 12.5 6"
+          stroke="url(#indIconGrad)"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+        />
       </svg>
     ),
+    items: ['Payment gateway solutions', 'Blockchain & crypto platforms', 'Robo-advisory apps', 'Insurance tech platforms'],
   },
   {
     name: 'Healthcare',
     tag: 'HEALTH TECH',
-    items: ['Telemedicine platforms', 'EHR/EMR systems', 'Health monitoring apps', 'AI-powered diagnostics'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
-        <path d="M10 17S3 13 3 7.5A4.5 4.5 0 0 1 10 4a4.5 4.5 0 0 1 7 3.5C17 13 10 17 10 17Z" stroke="url(#indIconGrad)" strokeWidth="1.5" />
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
+        <path
+          d="M10 17S3 13 3 7.5A4.5 4.5 0 0 1 10 4a4.5 4.5 0 0 1 7 3.5C17 13 10 17 10 17Z"
+          stroke="url(#indIconGrad)"
+          strokeWidth="1.5"
+        />
         <path d="M8 9.5h4M10 7.5v4" stroke="url(#indIconGrad)" strokeWidth="1.3" strokeLinecap="round" />
       </svg>
     ),
+    items: ['Telemedicine platforms', 'EHR/EMR systems', 'Health monitoring apps', 'AI-powered diagnostics'],
   },
   {
     name: 'Ecommerce',
     tag: 'E-COMMERCE',
-    items: ['Custom marketplace development', 'B2B & B2C platforms', 'Headless commerce solutions', 'Inventory management systems'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
-        <path d="M2.5 3h2l1.5 8h9l1.5-5H6" stroke="url(#indIconGrad)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
+        <path
+          d="M2.5 3h2l1.5 8h9l1.5-5H6"
+          stroke="url(#indIconGrad)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         <circle cx="8" cy="15.5" r="1" fill="url(#indIconGrad)" />
         <circle cx="14" cy="15.5" r="1" fill="url(#indIconGrad)" />
       </svg>
     ),
+    items: ['Custom marketplace development', 'B2B & B2C platforms', 'Headless commerce solutions', 'Inventory management systems'],
   },
   {
     name: 'Manufacturing',
     tag: 'MANUFACTURING',
-    items: ['IoT-enabled factory automation', 'Supply chain management', 'Predictive maintenance systems', 'ERP & MES solutions'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
         <path d="M2 15V9l4-4 4 4V5l4 4v6H2Z" stroke="url(#indIconGrad)" strokeWidth="1.5" strokeLinejoin="round" />
         <rect x="7" y="11" width="2.5" height="4" rx="0.5" stroke="url(#indIconGrad)" strokeWidth="1.2" />
       </svg>
     ),
+    items: ['IoT-enabled factory automation', 'Supply chain management', 'Predictive maintenance systems', 'ERP & MES solutions'],
   },
   {
     name: 'Travel & Transport',
     tag: 'TRAVEL TECH',
-    items: ['Online booking platforms', 'Fleet management systems', 'Real-time tracking apps', 'Travel aggregator portals'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
         <path d="M3 14l4-8 3 5 2-3 5 6H3Z" stroke="url(#indIconGrad)" strokeWidth="1.5" strokeLinejoin="round" />
         <circle cx="15" cy="5" r="1.5" stroke="url(#indIconGrad)" strokeWidth="1.3" />
       </svg>
     ),
+    items: ['Online booking platforms', 'Fleet management systems', 'Real-time tracking apps', 'Travel aggregator portals'],
   },
   {
     name: 'Hospitality',
     tag: 'HOSPITALITY',
-    items: ['Hotel management systems', 'Restaurant POS & ordering apps', 'Guest experience platforms', 'Revenue management tools'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
         <rect x="3" y="9" width="14" height="9" rx="1" stroke="url(#indIconGrad)" strokeWidth="1.5" />
         <path d="M6 9V7a4 4 0 0 1 8 0v2" stroke="url(#indIconGrad)" strokeWidth="1.5" />
         <path d="M10 12v3" stroke="url(#indIconGrad)" strokeWidth="1.3" strokeLinecap="round" />
       </svg>
     ),
+    items: ['Hotel management systems', 'Restaurant POS & ordering apps', 'Guest experience platforms', 'Revenue management tools'],
   },
   {
     name: 'Telecom',
     tag: 'TELECOM TECH',
-    items: ['Intelligent Virtual Assistant', 'AI-based Billing', 'Robotic Process Automation', 'Fraud detection & security'],
-    icon: (s: number) => (
-      <svg width={s} height={s} viewBox="0 0 20 20" fill="none">
+    icon: (
+      <svg className='ind-svgs-hw' viewBox="0 0 20 20" fill="none">
         <path d="M5 10a7 7 0 0 0 10 0" stroke="url(#indIconGrad)" strokeWidth="1.5" strokeLinecap="round" />
         <path d="M7.5 12.5a4 4 0 0 0 5 0" stroke="url(#indIconGrad)" strokeWidth="1.5" strokeLinecap="round" />
         <path d="M10 15v2" stroke="url(#indIconGrad)" strokeWidth="1.5" strokeLinecap="round" />
         <path d="M2.5 7.5a10 10 0 0 0 15 0" stroke="url(#indIconGrad)" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
+    items: ['Intelligent Virtual Assistant', 'AI-based Billing', 'Robotic Process Automation', 'Fraud detection & security'],
   },
 ]
 
@@ -147,12 +169,16 @@ const Industries = () => {
                   onClick={() => setActiveCard(index)}
                 >
                   <div className={styles['ind-card-strip']}>
-                    <span className={styles['ind-card-icon']}>{ind.icon(20)}</span>
+                    <span className={styles['ind-card-icon']}>
+                      {ind.icon}
+                    </span>
                     <span className={styles['ind-card-label']}>{ind.name}</span>
                   </div>
                   <div className={styles['ind-card-content']}>
                     <div className={styles['ind-panel-header']}>
-                      <span className={styles['ind-panel-icon']}>{ind.icon(22)}</span>
+                      <span className={styles['ind-panel-icon']}>
+                        {ind.icon}
+                      </span>
                       <div className={styles['ind-panel-headings']}>
                         <h3 className={styles['ind-panel-title']}>{ind.name}</h3>
                         <span className={styles['ind-panel-tag']}>{ind.tag}</span>
@@ -181,7 +207,9 @@ const Industries = () => {
                 >
                   <button className={styles['ind-acc-header']} onClick={() => toggleAccordion(index)}>
                     <span className={styles['ind-acc-left']}>
-                      <span className={styles['ind-acc-icon']}>{ind.icon(18)}</span>
+                      <span className={styles['ind-acc-icon']}>
+                        {ind.icon}
+                      </span>
                       <span>{ind.name}</span>
                     </span>
                     <span className={styles['ind-acc-arrow']}>
