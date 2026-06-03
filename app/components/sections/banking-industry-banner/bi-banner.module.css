@@ -51,6 +51,51 @@
   margin: 0 auto !important;
 }
 
+/* ── Feature list (2-col grid → 1-col on mobile) ── */
+.bi-banner-features {
+  list-style: none;
+  margin: 1.25rem auto 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+  column-gap: clamp(1.5rem, 4vw, 3.5rem);
+  row-gap: 0.875rem;
+}
+
+.bi-banner-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* left-align the copy and pin the dot to the first line so wrapped
+   text reads cleanly instead of centering away from the bullet */
+.head-description2 {
+  text-align: left;
+  color:var(--text-white);
+  font-size: 14px;
+  letter-spacing: -0.42px;
+}
+
+.bi-banner-dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 10px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: var(--G31, linear-gradient(104deg, #3719CA 25.48%, #1DD1E8 85.1%));
+}
+
+@media (max-width: 640px) {
+  .bi-banner-features {
+    grid-template-columns: 1fr;
+    row-gap: 0.625rem;
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
 /* Tablets */
 @media (max-width: 1024px) {
   .bi-banner-content {

@@ -8,13 +8,68 @@
 .tech-filter {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.084);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 100px;
-    padding: 5px;
+    gap: 14px;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+/* ===== Tab (button) — each its own capsule ===== */
+/* compound selector keeps these winning over the global .filter-btn rules */
+.tech-filter .tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 26px;
+    border-radius: 100px;
+    border: 0.8px solid rgba(255, 255, 255, 0.06);
+background: rgba(255, 255, 255, 0.02);
+}
+
+.tech-filter .tab:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* active capsule: dark fill + glowing blue border */
+.tech-filter .tab.tab-active {
+    border: 0.8px solid rgba(47, 122, 241, 0.35);
+background: linear-gradient(135deg, rgba(47, 122, 241, 0.15) 0%, rgba(29, 209, 232, 0.08) 100%);
+box-shadow: 0 0 20px 0 rgba(47, 122, 241, 0.08), 0 1px 0 0 rgba(255, 255, 255, 0.05) inset;
+
+}
+
+/* count badge next to the label */
+.tab-count {
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--text-dull);
+    opacity: 0.7;
+    transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.tab:hover .tab-count {
+    opacity: 0.9;
+}
+
+.tab-active .tab-count {
+    color: #4A8CFF;
+    opacity: 1;
+}
+
+/* blue underline accent under the active tab */
+.tab-active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    transform: translateX(-50%);
+    width: 26px;
+    height: 3px;
+    border-radius: 3px;
+    background: #4A8CFF;
+    box-shadow: 0 0 8px rgba(74, 140, 255, 0.7);
 }
 
 /* ===== Tech Grid ===== */
@@ -23,7 +78,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    max-width: 1140px;
+    max-width: 824px;
     margin: auto;
 }
 
@@ -36,9 +91,9 @@
     gap: 12px;
     padding: 16px 24px 16px 24px;
     border-radius: 16px;
-    border: 0.8px solid rgba(255, 255, 255, 0.12);
-    background: #0b0b0b57;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.10);
+    border: 0.8px solid rgba(255, 255, 255, 0.04);
+background: rgba(255, 255, 255, 0.02);
+box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.10);
     cursor: default;
     transition: opacity 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
     min-height: 112px;

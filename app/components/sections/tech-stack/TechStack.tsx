@@ -43,8 +43,9 @@ const TechStack = () => {
   const [activeFilter, setActiveFilter] = useState<Category>('all')
 
   return (
-    <section>
-      <div className="container mx-auto px-4">
+    <div className="p-0">
+      <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20" style={{background: '#0A0E17'}}
+      >
 
         {/* Section Heading */}
         <div className="flex flex-col px-2 sm:px-0 mb-8">
@@ -65,15 +66,23 @@ const TechStack = () => {
         <div className="px-2 sm:px-0">
           <div className={styles['tech-filter-wrap']}>
             <div className={styles['tech-filter']}>
-              {filters.map((f) => (
-                <button
-                  key={f.value}
-                  className={`filter-btn ${activeFilter === f.value ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(f.value)}
-                >
-                  {f.label}
-                </button>
-              ))}
+              {filters.map((f) => {
+                const isActive = activeFilter === f.value
+                const count =
+                  f.value === 'all'
+                    ? techs.length
+                    : techs.filter((t) => t.category === f.value).length
+                return (
+                  <button
+                    key={f.value}
+                    className={`filter-btn ${styles['tab']} ${isActive ? `active ${styles['tab-active']}` : ''}`}
+                    onClick={() => setActiveFilter(f.value)}
+                  >
+                    {f.label}
+                    <span className={styles['tab-count']}>{count}</span>
+                  </button>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -100,7 +109,7 @@ const TechStack = () => {
         </div>
 
       </div>
-    </section>
+    </div>
   )
 }
 
