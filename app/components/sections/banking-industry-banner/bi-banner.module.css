@@ -1,32 +1,42 @@
 .bi-banner-section {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  min-height: 600px;
   overflow: hidden;
+  padding:0 !important;
+  max-height:100vh;
 }
 
 .bi-banner-video-wrapper {
-  position: absolute;
+  position: relative;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   z-index: 0;
   overflow: hidden;
 }
 
 .bi-banner-video {
   width: 100%;
-  height: 100%;
+  height: inherit;
   object-fit: cover;
   object-position: center bottom;
   display: block;
 
 }
 
+/* Tint/darken the footage so the white copy stays readable */
+.bi-banner-video-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .7;
+  background: linear-gradient(135deg, #0a0f23de 0%, #0f193ccc 40%, #0a0a1ec4 100%);
+}
+
 .bi-banner-content {
-  position: relative;
+  position: absolute;
   z-index: 2;
   text-align: center;
   display: flex;
@@ -37,7 +47,9 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  height: 100%;
+  top:16%;
+  left: 50%;
+  transform: translate(-50%, -15%);
 }
 
 /* Scoped heading override — keeps global .section-heading untouched
@@ -102,25 +114,45 @@
   }
 }
 
-/* Mobile landscape / small tablets */
+/* Mobile landscape / small tablets — still overlaid, just eased padding */
 @media (max-width: 768px) {
-  .bi-banner-section {
-    min-height: 560px;
-  }
-
   .bi-banner-content {
     padding: 5rem 1.25rem 1.5rem;
   }
+
 }
 
-/* Phones */
+/* Phones — stack the copy BELOW the video instead of overlaying it.
+   The video keeps its natural height as a banner at the top and the
+   content flows beneath it on the page's dark background.
+   (Placed after the wider queries so these rules win at <=600px.) */
+@media (max-width: 600px) {
+  .bi-banner-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    max-width: 100%;
+    padding: 2rem 1.5rem 2.5rem;
+  }
+}
+
+/* Small phones — tighten the stacked spacing and heading */
 @media (max-width: 480px) {
-  .bi-banner-section {
-    min-height: 520px;
+  .bi-banner-content {
+    padding: 7rem 1rem 13rem;
   }
 
-  .bi-banner-content {
-    padding: 4.5rem 1rem 1.25rem;
+  .bi-banner-heading {
+    font-size: clamp(24px, 7vw, 32px) !important;
+    letter-spacing: -0.5px !important;
+  }
+    .bi-banner-video{
+    object-fit: contain;
+  }
+  .bi-banner-video-wrapper{
+    position: absolute;
+    height: 100%;
   }
 }
 
@@ -129,6 +161,7 @@
   .bi-banner-content {
     padding-top: 4.5rem;
   }
+  
 }
 
 /* Wide desktops */

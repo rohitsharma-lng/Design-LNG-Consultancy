@@ -20,7 +20,7 @@ const BiBanner = () => {
           playsInline
           preload="auto"
           aria-hidden="true"
-          src="/videos/Bi-banner-video-2.mp4"
+          src="/videos/Banking.mp4"
         />
       </div>
 
