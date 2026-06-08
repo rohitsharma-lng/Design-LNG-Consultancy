@@ -50,6 +50,7 @@ const total = sections.length
 
 const ChlPinnedCards = () => {
   const sectionRef = useRef<HTMLElement>(null)
+  const cardContainerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const iconRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -107,49 +108,65 @@ const ChlPinnedCards = () => {
       stat2ValueRef.current,
     ].filter(Boolean)
 
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top top',
-      end: () => '+=' + window.innerHeight * (total - 1),
-      scrub: 1,
-      pin: true,
-      pinSpacing: true,
-      invalidateOnRefresh: true,
-      snap: {
-        snapTo: 1 / (total - 1),
-        duration: { min: 0.2, max: 0.4 },
-        delay: 0.05,
-        ease: 'power1.inOut',
-      },
-      onUpdate: (self: any) => {
-        const progress = self.progress * total
-        const index = Math.min(Math.floor(progress), total - 1)
+    const onUpdate = (self: any) => {
+      const progress = self.progress * total
+      const index = Math.min(Math.floor(progress), total - 1)
 
-        if (index === currentRef.current) return
-        currentRef.current = index
+      if (index === currentRef.current) return
+      currentRef.current = index
 
-        gsap.to(animatedEls, {
-          opacity: 0,
-          y: 40,
-          duration: 0.25,
-          ease: 'power1.out',
-          overwrite: true,
-          onComplete: () => {
-            updateContent(index)
+      gsap.to(animatedEls, {
+        opacity: 0,
+        y: 40,
+        duration: 0.25,
+        ease: 'power1.out',
+        overwrite: true,
+        onComplete: () => {
+          updateContent(index)
 
-            gsap.fromTo(animatedEls, { opacity: 0, y: 40 }, {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              stagger: 0.05,
-              ease: 'power2.out',
-            })
-          },
-        })
+          gsap.fromTo(animatedEls, { opacity: 0, y: 40 }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: 0.05,
+            ease: 'power2.out',
+          })
+        },
+      })
 
-        dotsRef.current.forEach((dot) => dot?.classList.remove(aiStyles['active']))
-        dotsRef.current[index]?.classList.add(aiStyles['active'])
-      },
+      dotsRef.current.forEach((dot) => dot?.classList.remove(aiStyles['active']))
+      dotsRef.current[index]?.classList.add(aiStyles['active'])
+    }
+
+    const createTrigger = (trigger: Element | null, pin: Element | boolean, start: string) => {
+      ScrollTrigger.create({
+        trigger,
+        start,
+        end: () => '+=' + window.innerHeight * (total - 1),
+        scrub: 1,
+        pin,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
+        snap: {
+          snapTo: 1 / (total - 1),
+          duration: { min: 0.2, max: 0.4 },
+          delay: 0.05,
+          ease: 'power1.inOut',
+        },
+        onUpdate,
+      })
+    }
+
+    // ≤390px: pin only the card so the heading scrolls away normally
+    // (avoids it sticking under the fixed navbar). Above that: pin the section.
+    const mm = gsap.matchMedia()
+
+    mm.add('(max-width: 390px)', () => {
+      createTrigger(cardContainerRef.current, cardContainerRef.current, 'center center')
+    })
+
+    mm.add('(min-width: 391px)', () => {
+      createTrigger(sectionRef.current, true, 'top top')
     })
   }, [updateContent])
 
@@ -179,7 +196,7 @@ const ChlPinnedCards = () => {
         </div>
 
         {/* Scroll Card */}
-        <div className={aiStyles['nl-card-container']}>
+        <div ref={cardContainerRef} className={aiStyles['nl-card-container']}>
           <div className={aiStyles['nl-card-border']}>
             <div ref={wrapperRef} className={styles['chl-wrapper']}>
               {/* Content Row */}
