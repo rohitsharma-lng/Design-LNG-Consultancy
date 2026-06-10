@@ -278,27 +278,28 @@ const DevelopmentProcess = () => {
         </div>
 
         {/* Body */}
-        <div className={styles['dp-body']}>
+        <div className={`${styles['dp-body']} ${styles['dp-card-wrap']}`}>
           {/* Left card */}
+
           <div className={styles['dp-card']} key={tab.id}>
             <div className={styles['dp-card-icon']}>{tab.cardIcon}</div>
             <h3 className={styles['dp-card-title']}>{tab.title}</h3>
             <p className={styles['dp-card-desc']}>{tab.description}</p>
 
-            <div className={styles['dp-tags']}>
+            {/* <div className={styles['dp-tags']}>
               {tab.tags.map((tag) => (
                 <span key={tag} className={styles['dp-tag']}>{tag}</span>
               ))}
-            </div>
+            </div> */}
 
-            <div className={styles['dp-features']}>
+            {/* <div className={styles['dp-features']}>
               {tab.features.map((f) => (
                 <div key={f.label} className={styles['dp-feature']}>
                   <div className={styles['dp-feature-icon']}>{f.icon}</div>
                   <div className={styles['dp-feature-label']}>{f.label}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right image */}
