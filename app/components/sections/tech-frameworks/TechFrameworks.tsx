@@ -70,6 +70,19 @@ const frameworks: Framework[] = [
     image: '/images/cross-platform-5.png',
     href: '#',
   },
+    {
+    title: 'PhoneGap',
+    description: (
+      <>
+        A reliable <strong>open-source framework</strong> used for developing
+        cross-platform mobile apps using the latest tech stacks across every
+        major platform.
+      </>
+    ),
+    image: '/images/cross-platform-5.png',
+    href: '#',
+  },
+  
 ]
 
 interface Row {

@@ -3,13 +3,23 @@
 import Image from 'next/image'
 import styles from './testimonial.module.css'
 
-const testimonials = [
+type Testimonial = {
+  logo: string
+  text: string
+  initials: string
+  name: string
+  title: string
+  image?: string
+}
+
+const testimonials: Testimonial[] = [
   {
     logo: '/images/idm-logo-white.png',
     text: "Working with L&G has been a fantastic experience. In addition to moving our business in the new direction, I have learnt an incredible amount from them. I have to commend each and every member of their team for their dedication to client satisfaction, their professionalism and their ability to solve any challenge that they are presented with.",
     initials: 'GW',
     name: 'Geoffrey Wylde',
     title: 'Product Owner',
+    image: 'https://i.pravatar.cc/96?img=12',
   },
   {
     logo: '/images/idm-logo-white.png',
@@ -24,6 +34,8 @@ const testimonials = [
     initials: 'MC',
     name: 'Michael Chen',
     title: 'Director of Operations',
+    image: 'https://i.pravatar.cc/96?img=12',
+
   },
   {
     logo: '/images/idm-logo-white.png',
@@ -38,10 +50,12 @@ const testimonials = [
     initials: 'SM',
     name: 'Sarah Mitchell',
     title: 'CEO',
+    image: 'https://i.pravatar.cc/96?img=12',
+
   },
 ]
 
-const TestiCard = ({ t }: { t: (typeof testimonials)[0] }) => (
+const TestiCard = ({ t }: { t: Testimonial }) => (
   <div className={styles['testi-card']}>
     <div className={styles['testi-card-inner']}>
       <div className={styles['testi-header']}>
@@ -52,7 +66,17 @@ const TestiCard = ({ t }: { t: (typeof testimonials)[0] }) => (
       </div>
       <div className={styles['testi-footer']}>
         <div className={styles['testi-avatar']}>
-          <span className={styles['testi-initials']}>{t.initials}</span>
+          {t.image ? (
+            <Image
+              src={t.image}
+              alt={t.name}
+              width={48}
+              height={48}
+              className={styles['testi-avatar-img']}
+            />
+          ) : (
+            <span className={styles['testi-initials']}>{t.initials}</span>
+          )}
         </div>
         <div className={styles['testi-author']}>
           <div className={styles['testi-name']}>{t.name}</div>
